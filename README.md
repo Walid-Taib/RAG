@@ -63,6 +63,98 @@ To run the API locally, follow these steps:
 
 ## Running the API
 To start the API server, run the following command from the `Backend/` directory:
-```bash
+bash
 python server.py
+
+
+The API will run by default at `http://localhost:5000`.
+
+## API Endpoints
+The RAG API exposes the following key endpoints:
+
+### POST /api/retrieve
+- **Description:** Retrieves relevant documents based on the query.
+- **Request Body:**
+    ```json
+    {
+      "query": "What are the symptoms of COVID-19?"
+    }
+    ```
+- **Response:**
+    ```json
+    {
+      "retrieved_documents": [
+        {
+          "source": "CDC",
+          "text": "The symptoms of COVID-19 include..."
+        },
+        {
+          "source": "NHS",
+          "text": "COVID-19 symptoms may present as..."
+        }
+      ]
+    }
+    ```
+
+### POST /api/generate
+- **Description:** Generates a response using retrieved documents.
+- **Request Body:**
+    ```json
+    {
+      "query": "What are the symptoms of COVID-19?",
+      "retrieved_documents": [
+        {
+          "source": "CDC",
+          "text": "The symptoms of COVID-19 include..."
+        },
+        {
+          "source": "NHS",
+          "text": "COVID-19 symptoms may present as..."
+        }
+      ]
+    }
+    ```
+- **Response:**
+    ```json
+    {
+      "generated_response": "According to the CDC and NHS, COVID-19 symptoms include fever, cough, and shortness of breath."
+    }
+    ```
+
+### POST /api/detect_fake_news
+- **Description:** Detects whether a query contains misinformation.
+- **Request Body:**
+    ```json
+    {
+      "query": "Drinking bleach cures COVID-19."
+    }
+    ```
+- **Response:**
+    ```json
+    {
+      "is_fake_news": true,
+      "confidence_score": 0.97
+    }
+    ```
+
+## How It Works
+- **Document Retrieval:** The `/api/retrieve` endpoint fetches relevant documents from reliable health sources based on the input query.
+- **Answer Generation:** The `/api/generate` endpoint combines retrieved documents with a pre-trained model to generate a coherent and factually accurate response.
+- **Fake News Detection:** The `/api/detect_fake_news` endpoint classifies the input query and assesses the likelihood of it being fake news.
+
+## Contributions
+We welcome contributions from the community! Whether it's improving retrieval methods, enhancing model accuracy, or fixing bugs, feel free to submit a pull request.
+
+## Authors 🚀
+The HeReFaNMi RAG API was developed by:
+
+- Walid Taib
+- Marouane Tliba
+- Mohamed Amine Kerkouri
+- Bruno Alessandro
+- Aladine Chetouani
+- Pierluigi Mazzeo
+
+For inquiries or feedback, please open an issue in this repository.
+
 
