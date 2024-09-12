@@ -32,3 +32,37 @@ rag-api/
 └── models/                    # Contains model definitions and training scripts
      ├── rag_model.py          # RAG model architecture
      └── training.py           # Script for fine-tuning the model on new data
+
+
+## Built With
+The following frameworks and libraries power the API:
+
+- **Flask** - Web framework for hosting the API
+- **MongoDB** - Database for storing retrieved documents and metadata
+- **Hugging Face Transformers** - Pre-trained models for NLP tasks
+- **ElasticSearch** - Fast, scalable document retrieval
+
+## Installation
+To run the API locally, follow these steps:
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/your-username/rag-api.git
+    cd rag-api
+    ```
+
+2. Set up the backend:
+   Navigate to the `Backend/` directory and install the required dependencies:
+    ```bash
+    cd Backend
+    pip install -r requirements.txt
+    ```
+
+3. Set up the model:
+   Either download a pre-trained RAG model or fine-tune one using the provided scripts in the `models/` directory.
+
+## Running the API
+To start the API server, run the following command from the `Backend/` directory:
+```bash
+python server.py
+
