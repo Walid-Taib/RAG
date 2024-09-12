@@ -33,7 +33,7 @@ rag-api/
      ├── rag_model.py          # RAG model architecture
      └── training.py           # Script for fine-tuning the model on new data
 
-
+```
 ## Built With
 The following frameworks and libraries power the API:
 
